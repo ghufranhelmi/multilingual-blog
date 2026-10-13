@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ghufranhelmi/multilingual-blog
   branch: main
-  base_url: https://api.decapcms.org
+  base_url: https://multilingual-blog-auth.ghufranhelmi.workers.dev
   auth_endpoint: auth
 
 publish_mode: editorial_workflow
