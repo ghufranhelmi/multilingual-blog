@@ -2,7 +2,6 @@ backend:
   name: github
   repo: ghufranhelmi/multilingual-blog
   branch: main
-  client_id: Ov23li6JVU99JbIEfglZ
   base_url: https://multilingual-blog-auth.ghufranhelmi.workers.dev
   auth_endpoint: auth
 
