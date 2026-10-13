@@ -1,0 +1,167 @@
+backend:
+  name: github
+  repo: ghufranhelmi/multilingual-blog
+  branch: main
+  base_url: https://api.decapcms.org
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images"
+public_folder: "/images"
+
+site_url: https://your-blog.workers.dev
+
+collections:
+  - name: "blog_en"
+    label: "Blog — English"
+    folder: "src/content/blog/en"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog_zh"
+    label: "Blog — 中文"
+    folder: "src/content/blog/zh"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "描述", name: "description", widget: "string" }
+      - { label: "发布日期", name: "pubDate", widget: "datetime" }
+      - { label: "更新日期", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "头图", name: "heroImage", widget: "image", required: false }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  - name: "blog_es"
+    label: "Blog — Español"
+    folder: "src/content/blog/es"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "string" }
+      - { label: "Fecha de publicación", name: "pubDate", widget: "datetime" }
+      - { label: "Fecha de actualización", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Imagen principal", name: "heroImage", widget: "image", required: false }
+      - { label: "Etiquetas", name: "tags", widget: "list", required: false }
+      - { label: "Borrador", name: "draft", widget: "boolean", default: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "blog_ar"
+    label: "Blog — العربية"
+    folder: "src/content/blog/ar"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "العنوان", name: "title", widget: "string" }
+      - { label: "الوصف", name: "description", widget: "string" }
+      - { label: "تاريخ النشر", name: "pubDate", widget: "datetime" }
+      - { label: "تاريخ التحديث", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "الصورة الرئيسية", name: "heroImage", widget: "image", required: false }
+      - { label: "الوسوم", name: "tags", widget: "list", required: false }
+      - { label: "مسودة", name: "draft", widget: "boolean", default: false }
+      - { label: "المحتوى", name: "body", widget: "markdown" }
+
+  - name: "blog_id"
+    label: "Blog — Bahasa Indonesia"
+    folder: "src/content/blog/id"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Deskripsi", name: "description", widget: "string" }
+      - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime" }
+      - { label: "Tanggal Update", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Gambar Utama", name: "heroImage", widget: "image", required: false }
+      - { label: "Tag", name: "tags", widget: "list", required: false }
+      - { label: "Draf", name: "draft", widget: "boolean", default: false }
+      - { label: "Konten", name: "body", widget: "markdown" }
+
+  - name: "blog_pt"
+    label: "Blog — Português"
+    folder: "src/content/blog/pt"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descrição", name: "description", widget: "string" }
+      - { label: "Data de publicação", name: "pubDate", widget: "datetime" }
+      - { label: "Data de atualização", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Imagem principal", name: "heroImage", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Rascunho", name: "draft", widget: "boolean", default: false }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
+
+  - name: "blog_fr"
+    label: "Blog — Français"
+    folder: "src/content/blog/fr"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Date de publication", name: "pubDate", widget: "datetime" }
+      - { label: "Date de mise à jour", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Image principale", name: "heroImage", widget: "image", required: false }
+      - { label: "Étiquettes", name: "tags", widget: "list", required: false }
+      - { label: "Brouillon", name: "draft", widget: "boolean", default: false }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "blog_ja"
+    label: "Blog — 日本語"
+    folder: "src/content/blog/ja"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "説明", name: "description", widget: "string" }
+      - { label: "公開日", name: "pubDate", widget: "datetime" }
+      - { label: "更新日", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "ヒーロー画像", name: "heroImage", widget: "image", required: false }
+      - { label: "タグ", name: "tags", widget: "list", required: false }
+      - { label: "下書き", name: "draft", widget: "boolean", default: false }
+      - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: "blog_ru"
+    label: "Blog — Русский"
+    folder: "src/content/blog/ru"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "string" }
+      - { label: "Дата публикации", name: "pubDate", widget: "datetime" }
+      - { label: "Дата обновления", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Главное изображение", name: "heroImage", widget: "image", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+      - { label: "Черновик", name: "draft", widget: "boolean", default: false }
+      - { label: "Содержание", name: "body", widget: "markdown" }

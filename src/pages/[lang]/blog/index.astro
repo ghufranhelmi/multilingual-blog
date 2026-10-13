@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import { t, allLangs, type Lang } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return allLangs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const posts = (await getCollection('blog', (entry) =>
+  entry.id.startsWith(`${lang}/`) && !entry.data.draft
+)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={t(lang, 'nav.blog')}>
+  <div class="section-title">
+    <h1>{t(lang, 'nav.blog')}</h1>
+  </div>
+  {posts.length > 0 ? (
+    <div class="blog-grid">
+      {posts.map((post) => (
+        <BlogCard entry={post} lang={lang} />
+      ))}
+    </div>
+  ) : (
+    <p>{t(lang, 'blog.noPosts')}</p>
+  )}
+</BaseLayout>

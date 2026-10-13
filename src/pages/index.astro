@@ -1,0 +1,46 @@
+---
+// This page auto-detects the visitor's browser language and redirects.
+// If the user previously chose a language, that choice is remembered via localStorage.
+import { defaultLang } from '../i18n/ui';
+const fallback = defaultLang;
+---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script is:inline define:vars={{ fallback }}>
+      (function () {
+        const supported = ['en', 'zh', 'es', 'ar', 'id', 'pt', 'fr', 'ja', 'ru'];
+
+        // 1. Check if user previously chose a language
+        const saved = localStorage.getItem('preferred-lang');
+        if (saved && supported.includes(saved)) {
+          window.location.replace('/' + saved + '/');
+          return;
+        }
+
+        // 2. Detect browser language
+        const browserLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+
+        let detected = null;
+        for (const bl of browserLangs) {
+          const code = bl.toLowerCase().split('-')[0];
+          if (supported.includes(code)) {
+            detected = code;
+            break;
+          }
+        }
+
+        const target = detected || fallback;
+        localStorage.setItem('preferred-lang', target);
+        window.location.replace('/' + target + '/');
+      })();
+    </script>
+  </head>
+  <body>
+    <p style="font-family: sans-serif; text-align: center; margin-top: 3rem;">
+      Redirecting… <a href="/en/">Click here if not redirected</a>
+    </p>
+  </body>
+</html>

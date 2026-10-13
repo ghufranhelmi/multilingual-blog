@@ -1,0 +1,24 @@
+---
+import { t, type Lang } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const currentPath = Astro.url.pathname;
+const pathWithoutLang = currentPath.replace(/^\/(en|zh|es|ar|id|pt|fr|ja|ru)/, '');
+---
+
+<header class="site-header">
+  <nav>
+    <a href={`/${lang}`} class="logo">{t(lang, 'site.title')}</a>
+    <div class="nav-links">
+      <a href={`/${lang}`}>{t(lang, 'nav.home')}</a>
+      <a href={`/${lang}/blog`}>{t(lang, 'nav.blog')}</a>
+      <a href="/admin/">{t(lang, 'nav.admin')}</a>
+      <LanguageSwitcher lang={lang} currentPath={currentPath} pathWithoutLang={pathWithoutLang} />
+    </div>
+  </nav>
+</header>

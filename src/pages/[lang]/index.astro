@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { t, allLangs, type Lang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return allLangs.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+
+const posts = (await getCollection('blog', (entry) =>
+  entry.id.startsWith(`${lang}/`) && !entry.data.draft
+)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestPosts = posts.slice(0, 6);
+---
+
+<BaseLayout>
+  <section>
+    <h1>{t(lang, 'site.title')}</h1>
+    <p style="font-size: 1.15rem; color: var(--color-muted); margin-bottom: 2rem;">
+      {t(lang, 'site.description')}
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>{t(lang, 'blog.latestPosts')}</h2>
+      {posts.length > 6 && (
+        <a href={`/${lang}/blog`}>{t(lang, 'blog.viewAll')} →</a>
+      )}
+    </div>
+    {latestPosts.length > 0 ? (
+      <div class="blog-grid">
+        {latestPosts.map((post) => (
+          <BlogCard entry={post} lang={lang} />
+        ))}
+      </div>
+    ) : (
+      <p>{t(lang, 'blog.noPosts')}</p>
+    )}
+  </section>
+</BaseLayout>

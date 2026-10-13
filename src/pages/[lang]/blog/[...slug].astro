@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { t, allLangs, localeForLang, type Lang } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', (entry) => !entry.data.draft);
+  return allPosts.map((post) => {
+    const [lang, ...slugParts] = post.id.split('/');
+    return {
+      params: { lang, slug: slugParts.join('/') },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const lang = Astro.params.lang as Lang;
+
+const dateStr = post.data.pubDate.toLocaleDateString(localeForLang(lang), {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const updatedStr = post.data.updatedDate
+  ? post.data.updatedDate.toLocaleDateString(localeForLang(lang), {
+      year: 'numeric', month: 'long', day: 'numeric',
+    })
+  : null;
+
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post-content">
+    <div class="post-header">
+      <h1>{post.data.title}</h1>
+      <p class="post-meta">
+        {t(lang, 'blog.publishedOn')} {dateStr}
+        {updatedStr && ` — ${t(lang, 'blog.updatedOn')} ${updatedStr}`}
+      </p>
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt={post.data.title} style="margin-top: 1.5rem;" />
+      )}
+      {post.data.tags.length > 0 && (
+        <div class="post-tags">
+          {post.data.tags.map((tag) => (
+            <span class="post-tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="post-body">
+      <Content />
+    </div>
+
+    <p style="margin-top: 3rem;">
+      <a href={`/${lang}/blog`}>{t(lang, 'blog.backToBlog')}</a>
+    </p>
+  </article>
+</BaseLayout>
