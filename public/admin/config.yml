@@ -10,7 +10,8 @@ publish_mode: editorial_workflow
 media_folder: "public/images"
 public_folder: "/images"
 
-site_url: https://your-blog.workers.dev
+site_url: https://multilingual-blog.ghufranhelmi.workers.dev
+display_url: https://multilingual-blog.ghufranhelmi.workers.dev
 
 collections:
   - name: "blog_en"
