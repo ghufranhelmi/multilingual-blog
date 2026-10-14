@@ -8,7 +8,8 @@ const fallback = defaultLang;
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Redirecting…</title>
+    <title>Multilingual Blog</title>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
     <script is:inline define:vars={{ fallback }}>
       (function () {
         const supported = ['en', 'zh', 'es', 'ar', 'id', 'pt', 'fr', 'ja', 'ru'];
@@ -39,8 +40,6 @@ const fallback = defaultLang;
     </script>
   </head>
   <body>
-    <p style="font-family: sans-serif; text-align: center; margin-top: 3rem;">
-      Redirecting… <a href="/en/">Click here if not redirected</a>
-    </p>
+    <noscript><a href="/en/">Continue</a></noscript>
   </body>
 </html>
