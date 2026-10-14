@@ -1,5 +1,7 @@
 ---
 import { t, type Lang } from '../i18n/utils';
+import { tx } from '../i18n/extra';
+import BrandMark from './BrandMark.astro';
 
 interface Props {
   lang: Lang;
@@ -10,5 +12,25 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <p>&copy; {year} {t(lang, 'site.title')} — {t(lang, 'footer.rights')}</p>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href={`/${lang}`} class="logo">
+        <BrandMark />
+        <span>{t(lang, 'site.title')}</span>
+      </a>
+      <p>{t(lang, 'site.description')}</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href={`/${lang}`}>{t(lang, 'nav.home')}</a></li>
+      <li><a href={`/${lang}/blog`}>{tx(lang, 'reviews')}</a></li>
+    </ul>
+    <div class="footer-note">
+      <p>{tx(lang, 'disclosure')}</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {year} {t(lang, 'site.title')} — {t(lang, 'footer.rights')}</p>
+    </div>
+  </div>
 </footer>

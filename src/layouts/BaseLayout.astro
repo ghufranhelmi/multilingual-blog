@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, t, isRTL, type Lang } from '../i18n/utils';
+import { tx } from '../i18n/extra';
 import '../styles/global.css';
 
 interface Props {
@@ -16,6 +17,7 @@ const siteDesc = t(lang, 'site.description');
 const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 const pageDesc = description || siteDesc;
 const dir = isRTL(lang) ? 'rtl' : 'ltr';
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -24,13 +26,27 @@ const dir = isRTL(lang) ? 'rtl' : 'ltr';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0e1a2b" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+    />
   </head>
   <body>
+    <a class="skip-link" href="#main">{tx(lang, 'skip')}</a>
     <Header lang={lang} />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer lang={lang} />
