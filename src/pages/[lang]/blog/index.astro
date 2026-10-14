@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../components/BlogCard.astro';
 import { t, allLangs, type Lang } from '../../../i18n/utils';
+import { tx } from '../../../i18n/extra';
 
 export function getStaticPaths() {
   return allLangs.map((lang) => ({ params: { lang } }));
@@ -15,10 +16,9 @@ const posts = (await getCollection('blog', (entry) =>
 )).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title={t(lang, 'nav.blog')}>
-  <div class="section-title">
-    <h1>{t(lang, 'nav.blog')}</h1>
-  </div>
+<BaseLayout title={tx(lang, 'reviews')} description={tx(lang, 'reviewsIntro')}>
+  <h1>{tx(lang, 'reviews')}</h1>
+  <p class="page-intro">{tx(lang, 'reviewsIntro')}</p>
   {posts.length > 0 ? (
     <div class="blog-grid">
       {posts.map((post) => (

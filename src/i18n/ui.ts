@@ -1,3 +1,6 @@
+// Change the brand name here. It is used as the site title in every language.
+const BRAND = 'Northstack';
+
 export const languages = {
   en: 'English',
   zh: '中文',
@@ -18,8 +21,8 @@ export const rtlLanguages: Lang[] = ['ar'];
 
 export const ui = {
   en: {
-    'site.title': 'Multilingual Blog',
-    'site.description': 'A multilingual blog built with Astro & Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Clear, side-by-side reviews of business software.',
     'nav.home': 'Home',
     'nav.blog': 'Blog',
     'nav.admin': 'Admin',
@@ -35,8 +38,8 @@ export const ui = {
     'lang.switch': 'Language',
   },
   zh: {
-    'site.title': '多语言博客',
-    'site.description': '使用 Astro 和 Decap CMS 构建的多语言博客',
+    'site.title': BRAND,
+    'site.description': '清晰的商业软件并排评测与对比。',
     'nav.home': '首页',
     'nav.blog': '博客',
     'nav.admin': '管理',
@@ -52,8 +55,8 @@ export const ui = {
     'lang.switch': '语言',
   },
   es: {
-    'site.title': 'Blog Multilingüe',
-    'site.description': 'Un blog multilingüe construido con Astro y Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Reseñas y comparativas claras de software para empresas.',
     'nav.home': 'Inicio',
     'nav.blog': 'Blog',
     'nav.admin': 'Admin',
@@ -69,8 +72,8 @@ export const ui = {
     'lang.switch': 'Idioma',
   },
   ar: {
-    'site.title': 'مدونة متعددة اللغات',
-    'site.description': 'مدونة متعددة اللغات مبنية بـ Astro و Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'مراجعات ومقارنات واضحة لبرمجيات الأعمال.',
     'nav.home': 'الرئيسية',
     'nav.blog': 'المدونة',
     'nav.admin': 'الإدارة',
@@ -86,8 +89,8 @@ export const ui = {
     'lang.switch': 'اللغة',
   },
   id: {
-    'site.title': 'Blog Multibahasa',
-    'site.description': 'Blog multibahasa yang dibangun dengan Astro & Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Ulasan dan perbandingan perangkat lunak bisnis yang jelas.',
     'nav.home': 'Beranda',
     'nav.blog': 'Blog',
     'nav.admin': 'Admin',
@@ -103,8 +106,8 @@ export const ui = {
     'lang.switch': 'Bahasa',
   },
   pt: {
-    'site.title': 'Blog Multilíngue',
-    'site.description': 'Um blog multilíngue construído com Astro e Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Análises e comparações claras de software para empresas.',
     'nav.home': 'Início',
     'nav.blog': 'Blog',
     'nav.admin': 'Admin',
@@ -120,8 +123,8 @@ export const ui = {
     'lang.switch': 'Idioma',
   },
   fr: {
-    'site.title': 'Blog Multilingue',
-    'site.description': 'Un blog multilingue construit avec Astro et Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Des avis et comparatifs clairs de logiciels pour les entreprises.',
     'nav.home': 'Accueil',
     'nav.blog': 'Blog',
     'nav.admin': 'Admin',
@@ -137,8 +140,8 @@ export const ui = {
     'lang.switch': 'Langue',
   },
   ja: {
-    'site.title': '多言語ブログ',
-    'site.description': 'AstroとDecap CMSで構築された多言語ブログ',
+    'site.title': BRAND,
+    'site.description': 'ビジネス向けソフトウェアの、わかりやすいレビューと比較。',
     'nav.home': 'ホーム',
     'nav.blog': 'ブログ',
     'nav.admin': '管理',
@@ -154,8 +157,8 @@ export const ui = {
     'lang.switch': '言語',
   },
   ru: {
-    'site.title': 'Многоязычный блог',
-    'site.description': 'Многоязычный блог на Astro и Decap CMS',
+    'site.title': BRAND,
+    'site.description': 'Понятные обзоры и сравнения программного обеспечения для бизнеса.',
     'nav.home': 'Главная',
     'nav.blog': 'Блог',
     'nav.admin': 'Админ',

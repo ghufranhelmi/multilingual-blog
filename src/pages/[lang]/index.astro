@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { t, allLangs, type Lang } from '../../i18n/utils';
+import { tx } from '../../i18n/extra';
 
 export function getStaticPaths() {
   return allLangs.map((lang) => ({ params: { lang } }));
@@ -10,31 +11,59 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 
-const posts = (await getCollection('blog', (entry) =>
-  entry.id.startsWith(`${lang}/`) && !entry.data.draft
-)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (
+  await getCollection('blog', (entry) => entry.id.startsWith(`${lang}/`) && !entry.data.draft)
+)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
-const latestPosts = posts.slice(0, 6);
+const criteria = ['panelPricing', 'panelEase', 'panelSupport', 'panelIntegrations'] as const;
+const commitments = [
+  { title: 'trust1Title', text: 'trust1Text' },
+  { title: 'trust2Title', text: 'trust2Text' },
+  { title: 'trust3Title', text: 'trust3Text' },
+] as const;
 ---
 
 <BaseLayout>
-  <section>
-    <h1>{t(lang, 'site.title')}</h1>
-    <p style="font-size: 1.15rem; color: var(--color-muted); margin-bottom: 2rem;">
-      {t(lang, 'site.description')}
-    </p>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>{tx(lang, 'heroTitle')}</h1>
+      <p class="hero-sub">{tx(lang, 'heroSubtitle')}</p>
+      <a class="btn btn-primary" href={`/${lang}/blog`}>{tx(lang, 'heroCta')}</a>
+    </div>
+    <aside class="hero-panel">
+      <h2>{tx(lang, 'panelTitle')}</h2>
+      <ul>
+        {criteria.map((key) => (
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12.5l4.5 4.5L19 7.5" />
+            </svg>
+            <span>{tx(lang, key)}</span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </section>
+
+  <section class="trust">
+    {commitments.map((item) => (
+      <div>
+        <h3>{tx(lang, item.title)}</h3>
+        <p>{tx(lang, item.text)}</p>
+      </div>
+    ))}
   </section>
 
   <section>
     <div class="section-title">
       <h2>{t(lang, 'blog.latestPosts')}</h2>
-      {posts.length > 6 && (
-        <a href={`/${lang}/blog`}>{t(lang, 'blog.viewAll')} →</a>
-      )}
+      {posts.length > 0 && <a href={`/${lang}/blog`}>{t(lang, 'blog.viewAll')}</a>}
     </div>
-    {latestPosts.length > 0 ? (
+    {posts.length > 0 ? (
       <div class="blog-grid">
-        {latestPosts.map((post) => (
+        {posts.map((post) => (
           <BlogCard entry={post} lang={lang} />
         ))}
       </div>
