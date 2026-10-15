@@ -166,3 +166,54 @@ collections:
       - { label: "Теги", name: "tags", widget: "list", required: false }
       - { label: "Черновик", name: "draft", widget: "boolean", default: false }
       - { label: "Содержание", name: "body", widget: "markdown" }
+
+- name: "blog_de"
+    label: "Blog — Deutsch"
+    folder: "src/content/blog/de"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beschreibung", name: "description", widget: "string" }
+      - { label: "Veröffentlichungsdatum", name: "pubDate", widget: "datetime" }
+      - { label: "Aktualisierungsdatum", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Titelbild", name: "heroImage", widget: "image", required: false }
+      - { label: "Schlagwörter", name: "tags", widget: "list", required: false }
+      - { label: "Entwurf", name: "draft", widget: "boolean", default: false }
+      - { label: "Inhalt", name: "body", widget: "markdown" }
+
+  - name: "blog_it"
+    label: "Blog — Italiano"
+    folder: "src/content/blog/it"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Descrizione", name: "description", widget: "string" }
+      - { label: "Data di pubblicazione", name: "pubDate", widget: "datetime" }
+      - { label: "Data di aggiornamento", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Immagine copertina", name: "heroImage", widget: "image", required: false }
+      - { label: "Tag", name: "tags", widget: "list", required: false }
+      - { label: "Bozza", name: "draft", widget: "boolean", default: false }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "blog_ko"
+    label: "Blog — 한국어"
+    folder: "src/content/blog/ko"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "설명", name: "description", widget: "string" }
+      - { label: "게시일", name: "pubDate", widget: "datetime" }
+      - { label: "수정일", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "대표 이미지", name: "heroImage", widget: "image", required: false }
+      - { label: "태그", name: "tags", widget: "list", required: false }
+      - { label: "초안", name: "draft", widget: "boolean", default: false }
+      - { label: "본문", name: "body", widget: "markdown" }

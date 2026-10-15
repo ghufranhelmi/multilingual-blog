@@ -41,6 +41,9 @@ export function localeForLang(lang: Lang): string {
     fr: 'fr-FR',
     ja: 'ja-JP',
     ru: 'ru-RU',
+    de: 'de-DE',
+    it: 'it-IT',
+    ko: 'ko-KR',
   };
   return map[lang];
 }
