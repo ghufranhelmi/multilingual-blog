@@ -167,7 +167,7 @@ collections:
       - { label: "Черновик", name: "draft", widget: "boolean", default: false }
       - { label: "Содержание", name: "body", widget: "markdown" }
 
-- name: "blog_de"
+  - name: "blog_de"
     label: "Blog — Deutsch"
     folder: "src/content/blog/de"
     create: true
