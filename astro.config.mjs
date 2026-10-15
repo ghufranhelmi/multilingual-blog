@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://multilingual-blog.ghufranhelmi.workers.dev',
+  site: 'https://plugandnest.com',
 
   // Astro i18n — 9 languages
   i18n: {
