@@ -36,6 +36,9 @@ const TARGETS = {
   fr: 'French',
   ja: 'Japanese',
   ru: 'Russian',
+  de: 'German',
+  it: 'Italian',
+  ko: 'Korean',
 };
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
@@ -44,6 +47,7 @@ const MOCK = process.env.TRANSLATE_MOCK === '1';
 const SOURCE_DIR = path.join(CONTENT_DIR, SOURCE_LANG);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+let quotaExhausted = false; // set when the daily (per-day) quota is used up
 const isPost = (f) => /\.mdx?$/.test(f);
 
 if (!MOCK && !API_KEY) {
@@ -124,13 +128,24 @@ async function callGemini(prompt) {
       return JSON.parse(text);
     }
 
+    const errText = await res.text();
+
+    // Daily quota used up: waiting a few minutes cannot fix it, so stop the whole run.
+    if (res.status === 429 && /PerDay/i.test(errText)) {
+      quotaExhausted = true;
+      throw new Error('Daily Gemini quota exhausted. Re-run the workflow after the quota resets.');
+    }
+
     if ([429, 500, 502, 503, 504].includes(res.status) && attempt < 5) {
-      const wait = 10000 * 2 ** (attempt - 1);
-      console.warn(`  Gemini returned ${res.status}, retrying in ${wait / 1000}s...`);
+      // Gemini often says how long to wait: "retryDelay": "34s"
+      const hinted = errText.match(/"retryDelay":\s*"(\d+(?:\.\d+)?)s"/);
+      const hintMs = hinted ? Math.ceil(Number(hinted[1]) * 1000) + 1000 : 0;
+      const wait = Math.max(10000 * 2 ** (attempt - 1), hintMs);
+      console.warn(`  Gemini returned ${res.status}, retrying in ${Math.round(wait / 1000)}s...`);
       await sleep(wait);
       continue;
     }
-    throw new Error(`Gemini API ${res.status}: ${(await res.text()).slice(0, 300)}`);
+    throw new Error(`Gemini API ${res.status}: ${errText.slice(0, 300)}`);
   }
 }
 
@@ -180,6 +195,7 @@ async function translate(payload, lang, langName) {
     lastProblem = validate(payload, result) ?? '';
     if (!lastProblem) return result;
     console.warn(`  Rejected translation (${lastProblem}), attempt ${attempt}/2`);
+    await sleep(5000); // keep the retry from bursting past the per-minute limit
   }
   throw new Error(`Translation failed validation: ${lastProblem}`);
 }
@@ -242,14 +258,22 @@ async function processPost(file, failures) {
       }
     }
 
+    if (quotaExhausted) {
+      console.warn(`${file} -> ${lang}: skipped (daily quota exhausted)`);
+      failures.push(`${file} -> ${lang}: skipped, daily quota exhausted`);
+      continue;
+    }
+
     try {
       console.log(`${file} -> ${lang}: translating with ${MOCK ? 'mock' : MODEL}...`);
       const tr = await translate(payload, lang, langName);
       writeTranslation(outPath, data, tr, lang, hash);
-      if (!MOCK) await sleep(3000);
     } catch (err) {
       console.error(`${file} -> ${lang}: FAILED: ${err.message}`);
       failures.push(`${file} -> ${lang}: ${err.message}`);
+    } finally {
+      // ~12 requests/min at most, under the 15/min free-tier limit
+      if (!MOCK && !quotaExhausted) await sleep(5000);
     }
   }
 }
@@ -275,7 +299,10 @@ console.log(`English posts to translate: ${upserts.length}, deleted: ${deletes.l
 
 const failures = [];
 for (const file of deletes) removeTranslations(file);
-for (const file of upserts) await processPost(file, failures);
+for (const file of upserts) {
+  if (quotaExhausted) break;
+  await processPost(file, failures);
+}
 
 if (failures.length) {
   console.error(`\n${failures.length} translation(s) failed:\n- ${failures.join('\n- ')}`);
