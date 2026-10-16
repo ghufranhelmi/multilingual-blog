@@ -2,7 +2,6 @@
 import { t, type Lang } from '../i18n/utils';
 import { tx } from '../i18n/extra';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import BrandMark from './BrandMark.astro';
 
 interface Props {
   lang: Lang;
@@ -10,7 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const currentPath = Astro.url.pathname;
-const pathWithoutLang = currentPath.replace(/^\/(en|zh|es|ar|id|pt|fr|ja|ru)/, '');
+const pathWithoutLang = currentPath.replace(/^\/(en|zh|es|ar|id|pt|fr|ja|ru|de|it|ko)/, '');
 
 const normalized = currentPath.replace(/\/+$/, '');
 const isHome = normalized === `/${lang}`;
@@ -26,8 +25,8 @@ const isReviews = normalized.startsWith(`/${lang}/blog`);
 <header class="site-header">
   <nav class="container" aria-label="Main">
     <a href={`/${lang}`} class="logo">
-      <BrandMark />
-      <span>{t(lang, 'site.title')}</span>
+      <!-- Menggunakan logo SVG baru -->
+      <img src="/logo.svg" alt="Plug & Nest Logo" class="brand-logo" />
     </a>
     <div class="nav-links">
       <a href={`/${lang}`} aria-current={isHome ? 'page' : undefined}>{t(lang, 'nav.home')}</a>
@@ -36,3 +35,11 @@ const isReviews = normalized.startsWith(`/${lang}/blog`);
     </div>
   </nav>
 </header>
+
+<style>
+  .brand-logo {
+    height: 32px; /* Sesuaikan tinggi logo jika terlalu besar/kecil */
+    width: auto;
+    display: block;
+  }
+</style>
