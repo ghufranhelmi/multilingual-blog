@@ -4,7 +4,6 @@ description: Compare Xero vs QuickBooks AI automated bank reconciliation. See
   which platform saves more time through pricing, ease of use, support, and
   integrations.
 pubDate: 2026-10-16T15:58:00.000+07:00
-updatedDate: ""
 tags:
   - Xero
   - QuickBooks

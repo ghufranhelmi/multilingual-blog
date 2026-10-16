@@ -5,7 +5,6 @@ description: >-
   Lihat platform mana yang lebih menghemat waktu melalui harga, kemudahan
   penggunaan, dukungan, dan integrasi.
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

@@ -2,7 +2,6 @@
 title: Xero 与 QuickBooks 对比：AI 自动化银行对账功能评测
 description: 对比 Xero 与 QuickBooks 的 AI 自动化银行对账功能。通过价格、易用性、支持服务和集成能力，看看哪个平台能为您节省更多时间。
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

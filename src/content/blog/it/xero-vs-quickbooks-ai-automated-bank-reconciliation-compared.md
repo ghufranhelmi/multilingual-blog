@@ -7,7 +7,6 @@ description: >-
   QuickBooks. Scopri quale piattaforma fa risparmiare più tempo in base a
   prezzi, facilità d'uso, assistenza e integrazioni.
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

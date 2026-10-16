@@ -217,3 +217,139 @@ collections:
       - { label: "태그", name: "tags", widget: "list", required: false }
       - { label: "초안", name: "draft", widget: "boolean", default: false }
       - { label: "본문", name: "body", widget: "markdown" }
+
+  - name: "blog_hi"
+    label: "Blog — हिन्दी"
+    folder: "src/content/blog/hi"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "शीर्षक", name: "title", widget: "string" }
+      - { label: "विवरण", name: "description", widget: "string" }
+      - { label: "प्रकाशित तिथि", name: "pubDate", widget: "datetime" }
+      - { label: "अद्यतन तिथि", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "मुख्य छवि", name: "heroImage", widget: "image", required: false }
+      - { label: "टैग", name: "tags", widget: "list", required: false }
+      - { label: "ड्राफ्ट", name: "draft", widget: "boolean", default: false }
+      - { label: "मुख्य भाग", name: "body", widget: "markdown" }
+
+  - name: "blog_tr"
+    label: "Blog — Türkçe"
+    folder: "src/content/blog/tr"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Açıklama", name: "description", widget: "string" }
+      - { label: "Yayın Tarihi", name: "pubDate", widget: "datetime" }
+      - { label: "Güncelleme Tarihi", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Kapak Görseli", name: "heroImage", widget: "image", required: false }
+      - { label: "Etiketler", name: "tags", widget: "list", required: false }
+      - { label: "Taslak", name: "draft", widget: "boolean", default: false }
+      - { label: "İçerik", name: "body", widget: "markdown" }
+
+  - name: "blog_vi"
+    label: "Blog — Tiếng Việt"
+    folder: "src/content/blog/vi"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - { label: "Mô tả", name: "description", widget: "string" }
+      - { label: "Ngày đăng", name: "pubDate", widget: "datetime" }
+      - { label: "Ngày cập nhật", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Hình ảnh chính", name: "heroImage", widget: "image", required: false }
+      - { label: "Thẻ", name: "tags", widget: "list", required: false }
+      - { label: "Bản nháp", name: "draft", widget: "boolean", default: false }
+      - { label: "Nội dung", name: "body", widget: "markdown" }
+
+  - name: "blog_th"
+    label: "Blog — ไทย"
+    folder: "src/content/blog/th"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "หัวข้อ", name: "title", widget: "string" }
+      - { label: "คำอธิบาย", name: "description", widget: "string" }
+      - { label: "วันที่เผยแพร่", name: "pubDate", widget: "datetime" }
+      - { label: "วันที่อัปเดต", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "รูปภาพหลัก", name: "heroImage", widget: "image", required: false }
+      - { label: "แท็ก", name: "tags", widget: "list", required: false }
+      - { label: "ฉบับร่าง", name: "draft", widget: "boolean", default: false }
+      - { label: "เนื้อหา", name: "body", widget: "markdown" }
+
+  - name: "blog_pl"
+    label: "Blog — Polski"
+    folder: "src/content/blog/pl"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Opis", name: "description", widget: "string" }
+      - { label: "Data publikacji", name: "pubDate", widget: "datetime" }
+      - { label: "Data aktualizacji", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Obraz główny", name: "heroImage", widget: "image", required: false }
+      - { label: "Tagi", name: "tags", widget: "list", required: false }
+      - { label: "Szkic", name: "draft", widget: "boolean", default: false }
+      - { label: "Treść", name: "body", widget: "markdown" }
+
+  - name: "blog_nl"
+    label: "Blog — Nederlands"
+    folder: "src/content/blog/nl"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beschrijving", name: "description", widget: "string" }
+      - { label: "Publicatiedatum", name: "pubDate", widget: "datetime" }
+      - { label: "Bijgewerkte datum", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Hoofdafbeelding", name: "heroImage", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Concept", name: "draft", widget: "boolean", default: false }
+      - { label: "Inhoud", name: "body", widget: "markdown" }
+
+  - name: "blog_uk"
+    label: "Blog — Українська"
+    folder: "src/content/blog/uk"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Опис", name: "description", widget: "string" }
+      - { label: "Дата публікації", name: "pubDate", widget: "datetime" }
+      - { label: "Дата оновлення", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Головне зображення", name: "heroImage", widget: "image", required: false }
+      - { label: "Теги", name: "tags", widget: "list", required: false }
+      - { label: "Чернетка", name: "draft", widget: "boolean", default: false }
+      - { label: "Вміст", name: "body", widget: "markdown" }
+
+  - name: "blog_sv"
+    label: "Blog — Svenska"
+    folder: "src/content/blog/sv"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beskrivning", name: "description", widget: "string" }
+      - { label: "Publiceringsdatum", name: "pubDate", widget: "datetime" }
+      - { label: "Uppdateringsdatum", name: "updatedDate", widget: "datetime", required: false }
+      - { label: "Huvudbild", name: "heroImage", widget: "image", required: false }
+      - { label: "Taggar", name: "tags", widget: "list", required: false }
+      - { label: "Utkast", name: "draft", widget: "boolean", default: false }
+      - { label: "Innehåll", name: "body", widget: "markdown" }

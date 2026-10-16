@@ -3,7 +3,6 @@ title: Xero vs QuickBooks：AI自動銀行照合機能の比較
 description: >-
   XeroとQuickBooksのAI自動銀行照合機能を比較。価格、使いやすさ、サポート、連携機能の観点から、どちらのプラットフォームがより時間を節約できるかを解説します。
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

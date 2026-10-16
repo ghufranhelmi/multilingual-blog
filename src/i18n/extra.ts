@@ -266,3 +266,5 @@ de: {
 export function tx(lang: string, key: Key): string {
   return (dict[lang] ?? dict.en)[key];
 }
+
+

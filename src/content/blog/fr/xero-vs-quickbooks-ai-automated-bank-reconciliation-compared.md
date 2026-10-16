@@ -5,7 +5,6 @@ description: >-
   Découvrez quelle plateforme permet de gagner le plus de temps en fonction de
   la tarification, de la facilité d'utilisation, du support et des intégrations.
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

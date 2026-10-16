@@ -5,7 +5,6 @@ description: >-
   Descubre qué plataforma ahorra más tiempo según sus precios, facilidad de uso,
   soporte e integraciones.
 pubDate: 2026-10-16T08:58:00.000Z
-updatedDate: ''
 tags:
   - Xero
   - QuickBooks

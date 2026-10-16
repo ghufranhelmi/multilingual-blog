@@ -44,6 +44,15 @@ export function localeForLang(lang: Lang): string {
     de: 'de-DE',
     it: 'it-IT',
     ko: 'ko-KR',
+    // 8 Bahasa Baru
+    hi: 'hi-IN',
+    tr: 'tr-TR',
+    vi: 'vi-VN',
+    th: 'th-TH',
+    pl: 'pl-PL',
+    nl: 'nl-NL',
+    uk: 'uk-UA',
+    sv: 'sv-SE',
   };
   return map[lang];
 }
