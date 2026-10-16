@@ -247,7 +247,7 @@ It also supports third-party integrations through extensions, APIs, and webhooks
 
 There is no universally best help desk. **Zendesk** is the safest choice for complex, scaling support organizations; **Intercom** is strongest for AI-powered conversational support; **Help Scout** excels at simplicity; **Freshdesk** offers excellent value and breadth; **HubSpot Service Hub** is ideal for CRM-centric companies; and **Zoho Desk** delivers exceptional affordability.
 
-Before purchasing, run a pilot with your real ticket volume, test the AI features against your knowledge base, calculate the total cost including seats and usage, and verify that your critical integrations are supported on the specific plan you intend to buy.
+Before purchasing, run a pilot with your real ticket volume, test the AI features against your knowledge base, calculate the total cost including seats and usage, and verify that your critical integrations are supported on the specific plan you intend to buy..
 
 ## Sources
 
