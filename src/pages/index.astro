@@ -12,7 +12,10 @@ const fallback = defaultLang;
     <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
     <script is:inline define:vars={{ fallback }}>
       (function () {
-        const supported = ['en', 'zh', 'es', 'ar', 'id', 'pt', 'fr', 'ja', 'ru', 'de', 'it', 'ko'];
+        const supported = [
+  'en', 'zh', 'es', 'ar', 'id', 'pt', 'fr', 'ja', 'ru', 'de', 'it', 'ko',
+  'hi', 'tr', 'vi', 'th', 'pl', 'nl', 'uk', 'sv'
+];
 
         // 1. Check if user previously chose a language
         const saved = localStorage.getItem('preferred-lang');
