@@ -39,6 +39,14 @@ const TARGETS = {
   de: 'German',
   it: 'Italian',
   ko: 'Korean',
+  hi: 'Hindi',
+  tr: 'Turkish',
+  vi: 'Vietnamese',
+  th: 'Thai',
+  pl: 'Polish',
+  nl: 'Dutch',
+  uk: 'Ukrainian',
+  sv: 'Swedish',
 };
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
@@ -141,11 +149,11 @@ async function callGemini(prompt) {
       const hinted = errText.match(/"retryDelay":\s*"(\d+(?:\.\d+)?)s"/);
       const hintMs = hinted ? Math.ceil(Number(hinted[1]) * 1000) + 1000 : 0;
       const wait = Math.max(10000 * 2 ** (attempt - 1), hintMs);
-      console.warn(`  Gemini returned ${res.status}, retrying in ${Math.round(wait / 1000)}s...`);
+      console.warn(`  Gemini returned ${res.status}, retrying in${Math.round(wait / 1000)}s...`);
       await sleep(wait);
       continue;
     }
-    throw new Error(`Gemini API ${res.status}: ${errText.slice(0, 300)}`);
+    throw new Error(`Gemini API ${res.status}:${errText.slice(0, 300)}`);
   }
 }
 
@@ -157,6 +165,7 @@ Rules:
 - Write natural, fluent ${langName} for native readers. Keep the original tone and meaning.
 - Translate only the values of "title", "description", "tags" and "body".
 - "body" is Markdown. Keep its structure exactly: headings, lists, tables, bold/italic, blockquotes, code blocks.
+- CRITICAL REQUIREMENT: You MUST preserve ALL URLs and links EXACTLY as they appear in the original text. Do not omit, truncate, alter, translate, or remove any URL or link target. Every single URL found in the source must be present in the translated output.
 - Never change or translate: URLs, link targets, image paths, HTML tags and attributes, code, text inside backticks.
 - Never translate or alter product, brand, or company names. Keep numbers, prices, and currency symbols as written.
 - Do translate link text and image alt text.
@@ -190,11 +199,11 @@ async function translate(payload, lang, langName) {
     };
   }
   let lastProblem = '';
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  for (let attempt = 1; attempt <= 4; attempt++) {
     const result = await callGemini(buildPrompt(payload, langName));
     lastProblem = validate(payload, result) ?? '';
     if (!lastProblem) return result;
-    console.warn(`  Rejected translation (${lastProblem}), attempt ${attempt}/2`);
+    console.warn(`  Rejected translation (${lastProblem}), attempt ${attempt}/4`);
     await sleep(5000); // keep the retry from bursting past the per-minute limit
   }
   throw new Error(`Translation failed validation: ${lastProblem}`);
